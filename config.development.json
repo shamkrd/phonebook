@@ -1,0 +1,6 @@
+{
+    "DbUser":"root",
+    "DBPassword":"1234",
+    "DBName":"phonebook",
+    "Port":":5001"
+}

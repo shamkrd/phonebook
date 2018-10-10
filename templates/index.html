@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <title>PhoneBook</title>
+</head>
+
+<body>
+    <nav>
+        <div class="nav-wrapper">
+            <a href="#" class="brand-logo">PhoneBook</a>
+            <ul id="nav-mobile" class="left hide-on-med-and-down">
+                <li style="margin-left: 220px;">
+                    <a class="waves-effect modal-trigger" onclick="openAddContactModal()" href="#modal">
+                        Добавить контакт
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="row">
+            <div class="col s11">
+                <table class="highlight">
+                    <thead>
+                        <th>ID</th>
+                        <th>Имя</th>
+                        <th></th>
+                    </thead>
+                    <tbody id="contacts">
+                        {{range . }}
+                        <tr style="vertical-align: middle;" id="tr-{{.ID}}">
+                            <td>{{.ID}}</td>
+                            <td class="name">{{.Name}}</td>
+                            <td>
+                                <a href="#modal" data-id="{{.ID}}" onclick="openPhonesModal(this)" title="Список телефонов"
+                                    class="waves-effect modal-trigger">
+                                    <i class="btn material-icons">local_phone</i>
+                                </a>
+                                <a href="#modal" data-id="{{.ID}}" data-name="{{.Name}}" class="waves-effect modal-trigger"
+                                    onclick="openUpdateContactModal(this)" title="Редактировать">
+                                    <i class="btn material-icons">edit</i>
+                                </a>
+                                <a href="#modal" data-id="{{.ID}}" data-name="{{.Name}}" class="waves-effect modal-trigger"
+                                    onclick="openDeleteContactModal(this)" title="Удалить">
+                                    <i class="btn material-icons">delete</i>
+                                </a>
+                            </td>
+                        </tr>
+                        <tr>
+                        </tr>
+                        {{end}}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <!-- Modal Structure -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <h4 id="modal-title"></h4>
+            <div class="row">
+                <form class="col s12">
+                </form>
+            </div>
+            <div class="modal-footer" id="modal-footer">
+                <a href="#!" class="modal-close waves-effect waves-green btn-flat">Добавить</a>
+                <a href="#!" class="modal-close waves-effect waves-green btn-flat">Отмена</a>
+
+            </div>
+        </div>
+
+</body>
+
+</html>
+<script src="../static/js/models/phone.js" /></script>
+<script src="../static/js/models/contact.js" />
+</script>
+<script src="../static/js/services/webService.js" />
+</script>
+<script src="../static/js/services/phoneService.js" /></script>
+<script src="../static/js/services/contactService.js" />
+</script>
+<script src="../static/js/helpers/modalHelper.js" />
+</script>
+<script src="../static/js/helpers/htmlHelper.js" />
+</script>
+<script src="../static/js/init.js"></script>
